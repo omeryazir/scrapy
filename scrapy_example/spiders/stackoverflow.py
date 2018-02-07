@@ -5,7 +5,7 @@ from ..items import ScrapyExampleItem
 class StackoverflowSpider(scrapy.Spider):
     name = 'stackoverflow'
     allowed_domains = ['https://stackoverflow.com']
-    start_urls = ['http://https://stackoverflow.com/']
+    start_urls = ['https://stackoverflow.com']
 
     def parse(self, response):
         question = response.css('.question-summary')
@@ -13,4 +13,4 @@ class StackoverflowSpider(scrapy.Spider):
             title = q.css('.question-hyperlink::text').extract_first()
             item = ScrapyExampleItem()
             item ['title'] = title
-            yield title
+            yield item

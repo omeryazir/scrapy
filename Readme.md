@@ -14,7 +14,7 @@
 </ul>
 
 <h2><a href="#what" aria-hidden="true" class="anchor" id="user-content-what"></a>What is Scrapy ?</h2>
-<q>"An open source and collaborative framework for extracting the data you need from websites.Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival" </q>
+<q>An open source and collaborative framework for extracting the data you need from websites.Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival</q>
 
 
 <h2><a href="#alternatives" aria-hidden="true" class="anchor" id="user-content-alternatives"></a>Alternatives to Scrapy</h2>
@@ -82,6 +82,7 @@ $ pip install scrapy
 
 <h2><a href="#quickstart" aria-hidden="true" class="anchor" id="user-content-quickstart"></a>Quick Start Demo</h2>
 
+My spiders do crawls on the https://stackoverflow.com/ in this project.
 <pre>
 $ scrapy startproject scrapy_example
 New Scrapy project 'scrapy_example', using template directory '/your_directory/scrapy_example/lib/python3.5/site-packages/scrapy/templates/project', created in:
@@ -129,7 +130,7 @@ $ scrapy shell https://stackoverflow.com/
 [s]   spider     <DefaultSpider 'default' at 0x7f6a5dc1a630>
 [s] Useful shortcuts:
 [s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
-[s]   fetch(req)                  Fetch a scrapy.Request and update local objects 
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
 [s]   shelp()           Shell help (print this help)
 [s]   view(response)    View response in a browser</pre>
 
@@ -153,7 +154,7 @@ from ..items import ScrapyExampleItem
 class StackoverflowSpider(scrapy.Spider):
     name = 'stackoverflow'
     allowed_domains = ['https://stackoverflow.com']
-    start_urls = ['http://https://stackoverflow.com/']
+    start_urls = ['https://stackoverflow.com']
 
     def parse(self, response):
         question = response.css('.question-summary')
@@ -161,16 +162,27 @@ class StackoverflowSpider(scrapy.Spider):
             title = q.css('.question-hyperlink::text').extract_first()
             item = ScrapyExampleItem()
             item ['title'] = title
-            yield titles
+            yield item
+
 </pre>
 <br>
 <b>items.py</b>
 <pre>
 import scrapy
-
 class ScrapyExampleItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    title = scrapy.Field()
+&nbsp;&nbsp;&nbsp;title = scrapy.Field()
 </pre>
+
+<br>
+<br>Result to crawl on stackoverflow
+<pre>
+$ scrapy crawl stackoverflow</pre>
+
+Save results to questions.jl
+<pre>
+$ scrapy crawl stackoverflow --set FEED_URI=questions.jl</pre>
+Or
+Save results to result.json
+<pre>
+$ scrapy crawl stackoverflow -o result.json</pre>
 </article>
