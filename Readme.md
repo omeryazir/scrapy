@@ -167,8 +167,7 @@ class StackoverflowSpider(scrapy.Spider):
 <b>items.py</b>
 <pre>
 import scrapy
-
 class ScrapyExampleItem(scrapy.Item):
-    title = scrapy.Field()
+&nbsp;&nbsp;&nbsp;title = scrapy.Field()
 </pre>
 </article>
