@@ -1,120 +1,187 @@
-<img src="https://cdn-images-1.medium.com/max/1000/1*1Kb4nfsuXuuYeRmqIo3oyg.png">
-<article class="markdown-body entry-content" itemprop="text"><h1><a href="#django" aria-hidden="true" class="anchor" id="user-content-scrapy"></a>README - How to Use React with Django 2018</h1>
-<p>This project was created to learn <b>React with Django</b></p>
+<img src="https://www.22nds.com/wp-content/uploads/2017/07/scrapy-e1501276846765.png">
+<article class="markdown-body entry-content" itemprop="text"><h1><a href="#scrapy" aria-hidden="true" class="anchor" id="user-content-scrapy"></a>README Scrapy</h1>
+<p>This project was created to learn <b>Scrapy</b></p>
 
 
 <h2><a href="#table-of-contents" aria-hidden="true" class="anchor" id="user-content-table-of-contents"></a>Table of Contents</h2>
 
 <ul>
-<li><a href="#django">Step 1 : Create Django Project</a></li>
-<li><a href="react">Step 2 : Create React App</a></li>
-<li><a href="configure">Step 3 : Configure Django Settings.py, Urls.py and Manage.py</a></li>
+<li><a href="#what">What is Scrapy ?</a></li>
+<li><a href="#alternatives">Alternatives to Scrapy</a></li>
+<li><a href="#commands">Scrapy Commands</a></li>
+<li><a href="#howtoinstall">How to install Scrapy ?</a></li>
+<li><a href="#quickstart">Quick Start Demo</a></li>
 </ul>
 
-<h2><a href="#django" aria-hidden="true" class="anchor" id="user-content-what"></a>Step 1 : Create Django Projec</h2>
-<q>Firstly, we create a python environment for our django project. and creating django start project in this environment.</q>
+<h2><a href="#what" aria-hidden="true" class="anchor" id="user-content-what"></a>What is Scrapy ?</h2>
+<q>An open source and collaborative framework for extracting the data you need from websites.Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival</q>
+
+
+<h2><a href="#alternatives" aria-hidden="true" class="anchor" id="user-content-alternatives"></a>Alternatives to Scrapy</h2>
+  <li><a href="http://lxml.de/"> LXML</a></li>
+  <li><a href="http://www.seleniumhq.org/">  Selenium</a></li>
+  <li><a href="http://docs.python-requests.org/en/master/">  Request</a></li>
+  <li><a href="https://pypi.python.org/pypi/mechanize/">   Mechanize</a></li>
+  <li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">   Beautiful Soup 4</a></li>
 
 
 <h2></h2>
-<h2><a href="#commands" aria-hidden="true" class="anchor" id="user-content-commands"></a>Create Django Project</h2>
+<h2><a href="#commands" aria-hidden="true" class="anchor" id="user-content-commands"></a>Scrapy commands</h2>
+  <b>Global commands:</b>
   <pre>
-  $ python3 -m venv ReactwithDjango && cd ReactwithDjango
-  $ source bin/activate
-  $ pip install django
-  $ django-admin.py startproject reactwithdjango && cd reactwithdjango
-  $ ./manage.py runserver
-  </pre>
+  $ scrapy startproject myproject  </pre>
+  <pre>
+  $ scrapy genspider example example.com
+  Created spider 'example' using template 'basic'  </pre>
+  <pre>
+  $ scrapy settings --get BOT_NAME
+  scrapybot  </pre>
+  <pre>
+  scrapy runspider myspider.py
+  [ ... spider starts crawling ... ]  </pre>
+  <pre>
+  $ scrapy fetch --nolog http://www.example.com/some/page.html
+  [ ... html content here ... ]  </pre>
+  <pre>
+  $ scrapy view http://www.example.com/some/page.html
+  [ ... browser starts ... ]  </pre>
+<pre>
+  $ scrapy version [-v]  </pre>
+</pre>
   
-  
-
-<h2><a href="#react" aria-hidden="true" class="anchor" id="user-content-howtoinstall"></a>Step 2 : Create React App</h2>
-<p>Django project is completed. now creating react, but nodejs and npm not installed, now install nodejs and install npm.</p>
-
-<pre>$ sudo apt-get install nodejs npm</pre>
-
-Installing packages. This might take a couple of minutes.
-Installing react, react-dom, and react-scripts.
-
+ 
+ <b>Project-only commands:</b>
 <pre>
-$ npx create-react-app frontend && cd frontend
-$ npm start
+  $ scrapy crawl myspider
+  [ ... myspider starts crawling ... ]  </pre>
+  <pre>
+  $ scrapy check -l  </pre>
+  <pre>
+  $ scrapy list  </pre>
+  <pre>
+  $ scrapy edit spider1  </pre>
+  <pre>
+  $ scrapy bench  </pre>
+  <pre>
+  $ scrapy shell http://www.example.com/some/page.html
+  [ ... scrapy shell starts ... ]  </pre>
+  <pre>
+  $ scrapy parse http://www.example.com/ -c parse_item
+  [ ... scrapy log lines crawling example.com spider ... ]
 </pre>
 
-<pre> 
-$ npm run build
-</pre>
+<h2><a href="#howtoinstall" aria-hidden="true" class="anchor" id="user-content-howtoinstall"></a>How to install Scrapy ?</h2>
+<p>Install the latest version of Scrapy</p>
 
 <pre>
-That’s project’s all filesreactwithdjango/
-└─ frontend
-  └─ build
-  └─ node_modules
-  └─ public
-   └─ favicon.ico
-   └─ index.html
-   └─ manifest.json
-   └─ src
-└─ reactwithdjango
-  └─ __init__.py
-  └─ settings.py
-  └─ urls.py
-  └─ wsgi.py
-db.sqlite3
-manage.py
-package-lock.json
+  $ pip install scrapy
+</pre>
+If you want work to virtual enviroment.
+<pre>
+  $ python3 -m venv env_name
+  $ cd env_name
+  $ pip install scrapy
 </pre>
 
-<h2><a href="#configure" aria-hidden="true" class="anchor" id="user-content-quickstart"></a>Step 3 : Configure Django Settings.py, Urls.py and Manage.py</h2>
+<h2><a href="#quickstart" aria-hidden="true" class="anchor" id="user-content-quickstart"></a>Quick Start Demo</h2>
 
-<p>You need to update the directory addresses for the theme on settings.py</p>
+My spiders do crawls on the https://stackoverflow.com/ in this project.
 
-settings.py
 <pre>
-TEMPLATES = [
-    {        
-        'DIRS': [
-            os.path.join(BASE_DIR, 'frontend', 'build'),
-        ],
+h2><a href="#quickstart" aria-hidden="true" class="anchor" id="user-content-quickstart"></a>Quick Start Demo</h2>
+
+My spiders do crawls on the https://stackoverflow.com/ in this project.
+</pre>
+
+
+<pre>
+├── scrapy.cfg            # deploy configuration file
+└── scrapy_example        # project's Python module, you'll import your code from here
+    ├── __init__.py       
+    ├── items.py          # project items definition file
+    ├── middlewares.py    # project middlewares file
+    ├── pipelines.py      # project pipelines file
+    ├── __pycache__
+    ├── settings.py       # project settings file
+    └── spiders           # a directory where you'll later put your spiders
+        ├── __init__.py
+        └── __pycache__
 </pre>
 Again, you need to write under settings.py the following code for your static documentation
 
+Create mySpider
 <pre>
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
-]
+$ scrapy genspider stackoverflow  https://stackoverflow.com
+Created spider 'stackoverflow' using template 'basic' in module:
+  scrapy_example.spiders.stackoverflow
 </pre>
 
-urls.py
+Now, let's work on scrapy shell
 <pre>
-from django.urls import re_path
-from django.views.generic import TemplateView
-urlpatterns = [
-    re_path('.*', TemplateView.as_view(template_name='index.html')),
-...
+$ scrapy shell https://stackoverflow.com/
+
+[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    <scrapy.crawler.Crawler object at 0x7f6a64ad72e8>
+[s]   item       {}
+[s]   request    <GET https://stackoverflow.com/>
+[s]   response   <200 https://stackoverflow.com/>
+[s]   settings   <scrapy.settings.Settings object at 0x7f6a5e8239e8>
+[s]   spider     <DefaultSpider 'default' at 0x7f6a5dc1a630>
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser</pre>
+
+<img src="http://i68.tinypic.com/t0ohlx.png" >
 </pre>
 
-manage.py
 <pre>
-try:
-    if sys.argv[2] == 'react':
-        project_root = os.getcwd()
-        os.chdir(os.path.join(project_root, "frontend"))
-        os.system("npm run build")
-        os.chdir(project_root)
-        sys.argv.pop(2)
-except IndexError:
-    execute_from_command_line(sys.argv)
-else:
-    execute_from_command_line(sys.argv)
+$ response.css('.question-summary')
+$ question = response.css('.question-summary')
+$ q = question[0]
+$ q.css('.question-hyperlink').extract_first()
+$ q.css('.question-hyperlink::text').extract_first()
 </pre>
 
-After finishing editing, Runnn!
-
+<br>
+<b>spiders/stackoverflow.py</b>
 <pre>
-./manage.py runserver react
+import scrapy
+from ..items import ScrapyExampleItem
+
+class StackoverflowSpider(scrapy.Spider):
+    name = 'stackoverflow'
+    allowed_domains = ['https://stackoverflow.com']
+    start_urls = ['https://stackoverflow.com']
+
+    def parse(self, response):
+        question = response.css('.question-summary')
+        for q in question:
+            title = q.css('.question-hyperlink::text').extract_first()
+            item = ScrapyExampleItem()
+            item ['title'] = title
+            yield item
+</pre>
+ <br>
+ <b>items.py</b>
+<pre>
+import scrapy
+class ScrapyExampleItem(scrapy.Item):
+&nbsp;&nbsp;&nbsp;title = scrapy.Field()
 </pre>
 
-<pre>Completed. Now work on index.html in the public file. Happy hacking!</pre>
+<br>
+<br>Result to crawl on stackoverflow
+<pre>
+$ scrapy crawl stackoverflow</pre>
 
-You can examine in my story : <link href="https://medium.com/@omeryazir/how-to-use-react-with-django-2018-8dd0d4b22392">https://medium.com/@omeryazir/how-to-use-react-with-django-2018-8dd0d4b22392</link>
+Save results to questions.jl
+<pre>
+$ scrapy crawl stackoverflow --set FEED_URI=questions.jl</pre>
+Or
+Save results to result.json
+<pre>
+$ scrapy crawl stackoverflow -o result.json</pre>
 </article>
